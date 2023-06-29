@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/base.html :: head}"></head>
+<body>
+<header th:replace="~{fragments/base.html::header}"></header>
+<main class="d-flex flex-column justify-content-center align-items-center">
+    <h2>Tournoi</h2>
+    <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="text-danger"></div>
+    <form th:action="@{#}" method="post" class="d-flex flex-column align-items-center mt-5" style="width: 50%;">
+        <label for="name">nom Tournoi :</label>
+        <input type="text" name="title" id="name" class="form-control" th:value="${category!=null}? ${tournoi.getNomTournoi()} : ''">
+        <button class="btn btn-info mt-4" style="width: 60%">Send</button>
+    </form>
+</main>
+
+
+</body>
+</html>
