@@ -13,17 +13,16 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tournoi")
+
 public class Tournoi {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String NomTournoi;
 
-    @OneToMany
-    private List<Joueur>joueurs;
 
-    @OneToMany
+
+    @OneToMany(mappedBy = "tournoi" ,fetch = FetchType.LAZY)
     private List<Partie>partieList;
 
 

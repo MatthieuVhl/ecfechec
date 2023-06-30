@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -14,11 +15,17 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "partie")
 public class Partie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private Date date;
+    private Integer id;
+
+    private String title;
+    private boolean terminer = false;
+
+    @ManyToMany
+    private List<Utilisateur> utilisateur;
+    @ManyToOne
+    private Tournoi tournoi;
 
 }

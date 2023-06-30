@@ -16,12 +16,17 @@ public class SessionLoginServiceImpl implements LoginService {
         _httpSession.setAttribute("isLogged", true);
         _httpSession.setAttribute("fullName", utilisateur.getNom() + " "+utilisateur.getPrenom());
         _httpSession.setAttribute("userId", utilisateur.getId());
+        _httpSession.setAttribute("isAdmin", utilisateur.isActive());
         return true;
     }
 
     @Override
     public boolean isLogged(){
         return _httpSession.getAttribute("isLogged") != null && (boolean)_httpSession.getAttribute("isLogged") == true;
+    }
+    @Override
+    public boolean isAdmin(){
+        return _httpSession.getAttribute("isLogged") != null && (boolean)_httpSession.getAttribute("isAdmin") == true;
     }
 
     @Override
